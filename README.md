@@ -2,7 +2,7 @@
 
 ## Description
 
-Discord bot created and hosted on replit that tracks users' Wordle results. Automatically records scores for each user when they paste in a valid Wordle result.
+Discord bot created and hosted on [replit](https://replit.com/) that tracks users' Wordle results. Automatically records scores for each user when they paste in a valid Wordle result.
 
 There are better alternatives out there, this was created as small project.
 
