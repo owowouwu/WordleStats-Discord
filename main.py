@@ -151,10 +151,10 @@ async def scoreboard(ctx, order_by: typing.Optional[str]):
   # turn into df for easy sorting and printing
   dic = pd.DataFrame.from_dict(dic, orient='index')
   if ((order_by is None) or (order_by == 'avg')):
-    await ctx.channel.send(dic.sort_values(by = 'Average', ascending = True).to_string(header=False))
+    await ctx.channel.send(f"```{dic.sort_values(by = 'Average', ascending = True).to_string()}```")
   
   elif (order_by == 'clears'):
-    await ctx.channel.send(dic.sort_values(by = 'Clears', ascending = False).to_string(header=False))
+    await ctx.channel.send(f"```{dic.sort_values(by = 'Clears', ascending = False).to_string()}```")
   
   else:
     await ctx.channel.send("Syntax: ~scoreboard [clears/avg]")
