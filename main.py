@@ -21,6 +21,11 @@ NO_SCORE = 0
 LOSS = -1
 BOT_TOKEN = os.environ['TOKEN']
 
+def update_arrs():
+   for server in db:
+    for user in db[server]:
+      db[server][user].append(NO_SCORE)
+
 def validateLine(line):
     return WORDLE_PATTERN.match(line)
 
@@ -55,6 +60,8 @@ def addScore(score, day, server, user):
     db[server] = {}
   if user not in db[server].keys():
     db[server][user] = [NO_SCORE] * ((datetime.utcnow().replace(tzinfo=tz.gettz('UTC')).astimezone(TO_ZONE) - START_DATE).days + 1)
+  if (len(db[server][user]) < day):
+    update_arrs()
   if (db[server][user][day - 1] == NO_SCORE):
     db[server][user][day - 1] = score
 
@@ -68,11 +75,6 @@ def seconds_until(hours, minutes):
       future_exec = datetime.datetime.combine(now + datetime.timedelta(days=1), given_time)
 
     return (future_exec - now).total_seconds()
-
-def update_arrs():
-   for server in db:
-    for user in db[server]:
-      db[server][user] = db[server][user] + [NO_SCORE]
 
 schedule.every().day.at("00:01").do(update_arrs)
 async def task():
@@ -163,6 +165,7 @@ async def parsewordles(ctx, limit = 1000):
       if (result is not None):
         addScore(result[0], result[1], str(message.guild.id), str(message.author.id))
   await ctx.channel.send("Done!")
+
 
 keep_alive()
 client.run(BOT_TOKEN)
