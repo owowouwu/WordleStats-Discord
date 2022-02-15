@@ -4,12 +4,12 @@
 
 Discord bot created and hosted on [replit](https://replit.com/) that tracks users' Wordle results. Automatically records scores for each user when they paste in a valid Wordle result.
 
-There are better alternatives out there, this was created as small project.
+Quite literally created in one evening following this [tutorial](https://www.youtube.com/watch?v=SPTfmiYiuok).
 
-Quite literally created in one evening following this [tutorial](https://www.youtube.com/watch?v=SPTfmiYiuok). 
 ## Commands
 
 - ``scoreof <user> day`` - returns the score on a certain day for a user if specified. If not, returns the score for the user that called the command.
 - ``wordlestats <user>`` - gives basic stats such as average score. Another user can be optionally specified.
 - ``parsewordles <limit>`` parses messages in the channel the command is called looking for Wordles and storing data
+- ``scoreboard [avg/clears]`` prints a basic scoreboard in the specified order
 

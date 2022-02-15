@@ -1,4 +1,4 @@
-# ensure the bot runs continuously
+# ensures the bot runs continuously
 
 from flask import Flask
 from threading import Thread
